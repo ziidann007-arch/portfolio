@@ -833,18 +833,26 @@ nav a.active::after {
 
 }
 
+
 /* =========================================================
-   MARQUEE - LEFT ↔ RIGHT
+   INFINITE MARQUEE
 ========================================================= */
 
 .marquee {
     width: 100%;
+
     overflow: hidden;
 
-    border-top: 1px solid rgba(255,255,255,.08);
-    border-bottom: 1px solid rgba(255,255,255,.08);
+    border-top:
+        1px solid
+        rgba(255,255,255,.08);
 
-    background: rgba(255,255,255,.015);
+    border-bottom:
+        1px solid
+        rgba(255,255,255,.08);
+
+    background:
+        rgba(255,255,255,.015);
 
     padding: 22px 0;
 
@@ -856,14 +864,16 @@ nav a.active::after {
 
     width: max-content;
 
-    /* GERAK KIRI → KANAN → KIRI */
-    animation: marqueeBackForth 12s ease-in-out infinite alternate;
+    animation:
+        infiniteMarquee
+        22s linear infinite;
 
     will-change: transform;
 }
 
 .marquee-content {
     display: flex;
+
     align-items: center;
 
     flex-shrink: 0;
@@ -872,13 +882,14 @@ nav a.active::after {
 
     padding-right: 32px;
 
-    color: rgba(255,255,255,.5);
-
     font-size: 12px;
 
     font-weight: 500;
 
     letter-spacing: 3px;
+
+    color:
+        rgba(255,255,255,.5);
 }
 
 .marquee-content b {
@@ -893,60 +904,21 @@ nav a.active::after {
         rgba(184,255,61,.7);
 }
 
+@keyframes infiniteMarquee {
 
-/* 
-   Track bergerak dari posisi paling kiri
-   sampai posisi paling kanan yang masih
-   memungkinkan seluruh area terisi.
-*/
-
-@keyframes marqueeBackForth {
-
-    0% {
+    from {
         transform: translateX(0);
     }
 
-    100% {
-        transform: translateX(
-            calc(100vw - 100%)
-        );
+    to {
+        transform: translateX(-50%);
     }
 
 }
 
-
-/* Jangan berhenti ketika mouse diarahkan */
-.marquee:hover .marquee-track {
-    animation-play-state: running;
-}
-
-
-/* =========================================================
-   LIGHT MODE
-========================================================= */
-
-body.light .marquee {
-    border-top-color:
-        rgba(0,0,0,.08);
-
-    border-bottom-color:
-        rgba(0,0,0,.08);
-
-    background:
-        rgba(0,0,0,.015);
-}
-
-body.light .marquee-content {
-    color:
-        rgba(0,0,0,.65);
-}
-
-body.light .marquee-content b {
-    color: #76a900;
-
-    text-shadow:
-        0 0 8px
-        rgba(118,169,0,.25);
+.marquee:hover
+.marquee-track {
+    animation-play-state: paused;
 }
 
 
@@ -2357,4 +2329,69 @@ body.light .marquee-content {
         gap: 5px;
     }
 
+}
+
+/* ===== FIX HEADER MOBILE ===== */
+html,
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+    header {
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+    }
+
+    .navbar {
+        width: calc(100% - 24px) !important;
+        max-width: calc(100% - 24px) !important;
+        min-width: 0 !important;
+        margin-left: 12px !important;
+        margin-right: 12px !important;
+        box-sizing: border-box !important;
+    }
+
+    .navbar * {
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    .nav-container {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+    }
+
+    .nav-links {
+        max-width: 100%;
+    }
+
+    .nav-actions {
+        flex-shrink: 0;
+    }
+
+    .logo {
+        min-width: 0;
+        flex-shrink: 1;
+    }
+
+    .logo img {
+        flex-shrink: 0;
+    }
+
+    .logo-text {
+        min-width: 0;
+        overflow: hidden;
+    }
+
+    .logo-text h1,
+    .logo-text h2,
+    .logo-text span {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 }
