@@ -2331,67 +2331,144 @@ body.light .marquee-content {
 
 }
 
-/* ===== FIX HEADER MOBILE ===== */
+/* ==========================================
+   FINAL MOBILE WIDTH FIX
+========================================== */
+
 html,
 body {
+    width: 100%;
     max-width: 100%;
-    overflow-x: hidden;
+    overflow-x: hidden !important;
 }
 
-@media (max-width: 768px) {
-    header {
-        width: 100%;
-        max-width: 100%;
-        overflow: hidden;
+@media (max-width: 900px) {
+
+    /* NAVBAR */
+    .navbar {
+        position: fixed !important;
+
+        left: 10px !important;
+        right: 10px !important;
+
+        transform: none !important;
+
+        width: auto !important;
+        max-width: none !important;
+        min-width: 0 !important;
+
+        padding: 0 10px 0 12px !important;
+
+        overflow: visible !important;
     }
 
-    .navbar {
-        width: calc(100% - 24px) !important;
-        max-width: calc(100% - 24px) !important;
+    /* BAGIAN KIRI */
+    .brand {
         min-width: 0 !important;
-        margin-left: 12px !important;
-        margin-right: 12px !important;
+        max-width: calc(100% - 105px) !important;
+
+        flex: 1 1 auto !important;
+        overflow: hidden !important;
+    }
+
+    .brand-photo {
+        flex: 0 0 42px !important;
+    }
+
+    .brand-text {
+        min-width: 0 !important;
+        overflow: hidden !important;
+    }
+
+    .brand-text strong,
+    .brand-text span {
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+
+    /* BAGIAN KANAN */
+    .nav-right {
+        flex: 0 0 auto !important;
+        min-width: 0 !important;
+
+        display: flex !important;
+        align-items: center !important;
+
+        gap: 6px !important;
+    }
+
+    .icon-btn,
+    .menu-btn {
+        flex: 0 0 40px !important;
+    }
+
+    /* MENU DROPDOWN */
+    nav {
+        width: 100% !important;
+        max-width: 100% !important;
         box-sizing: border-box !important;
     }
 
-    .navbar * {
-        max-width: 100%;
-        box-sizing: border-box;
-    }
-
-    .nav-container {
+    /* HERO */
+    .hero {
         width: 100% !important;
         max-width: 100% !important;
-        min-width: 0 !important;
+        overflow: hidden !important;
     }
 
-    .nav-links {
+    /* ORBIT JANGAN BIKIN LEBAR HALAMAN */
+    .profile-orbit {
+        pointer-events: none !important;
+    }
+
+    /* SEMUA GAMBAR */
+    img,
+    video,
+    iframe {
         max-width: 100%;
     }
 
-    .nav-actions {
-        flex-shrink: 0;
+    /* SECTION */
+    .section,
+    .cv-section {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+}
+
+@media (max-width: 550px) {
+
+    .navbar {
+        left: 8px !important;
+        right: 8px !important;
+        width: auto !important;
+
+        height: 62px !important;
     }
 
-    .logo {
-        min-width: 0;
-        flex-shrink: 1;
+    .brand {
+        max-width: calc(100% - 92px) !important;
     }
 
-    .logo img {
-        flex-shrink: 0;
+    .brand-photo {
+        width: 38px !important;
+        height: 38px !important;
+        flex-basis: 38px !important;
     }
 
-    .logo-text {
-        min-width: 0;
-        overflow: hidden;
+    .brand-text strong {
+        font-size: 14px !important;
     }
 
-    .logo-text h1,
-    .logo-text h2,
-    .logo-text span {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+    .brand-text span {
+        font-size: 8px !important;
+    }
+
+    .icon-btn,
+    .menu-btn {
+        width: 38px !important;
+        height: 38px !important;
+        flex-basis: 38px !important;
     }
 }
